@@ -107,7 +107,7 @@ rNR44       EQU $ff23 ; Channel 4 Counter/consecutive; Inital (R/W)
 rNR50       EQU $ff24 ; Channel control / ON-OFF / Volume (R/W)
 rNR51       EQU $ff25 ; Selection of Sound output terminal (R/W)
 rNR52       EQU $ff26 ; Sound on/off
-rLCDC       EQU $ff40 ; LCD Control (R/W)
+rLCDC       EQU $ff4e ; LCD Control (R/W)
 rSTAT       EQU $ff41 ; LCDC Status (R/W)
 rSCY        EQU $ff42 ; Scroll Y (R/W)
 rSCX        EQU $ff43 ; Scroll X (R/W)

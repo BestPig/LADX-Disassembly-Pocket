@@ -23,7 +23,7 @@ FXFLAGS := \
   --new-licensee "01" \
   --mbc-type 0x1B \
   --pad-value 0xFF \
-  --validate
+  -f hg
 
 # Default target: build and test only the US 1.0 revision.
 # (Use `make all` to build and test all targets.)
@@ -60,7 +60,7 @@ src/main.%.o: src/main.asm $(asm_files) $(gfx_files:.png=.2bpp) $(bin_files)
 # Link object files into a GBC executable rom
 # The arguments used are both the global options (e.g. `LDFLAGS`) and the
 # locale-specific options (e.g. `azlg-r1_LDFLAGS`).
-%.gbc: src/main.%.o
+%.pocket: src/main.%.o
 	$(LD) $(LDFLAGS) $($*_LDFLAGS) -n $*.sym -o $@ $^
 	$(FX) $(FXFLAGS) $($*_FXFLAGS) $@
 
@@ -75,17 +75,17 @@ azlj_asm = $(shell find revisions/J0 -type f -name '*.asm')
 azlj_gfx = $(shell find revisions/J0 -type f -name '*.png')
 azlj_bin = $(shell find revisions/J0 -type f -name '*.tilemap.encoded')
 
-games += azlj.gbc
+games += azlj.pocket
 src/main.azlj.o: $(azlj_asm) $(azlj_gfx:.png=.2bpp) $(azlj_bin)
 azlj_ASFLAGS = -DLANG=JP -DVERSION=0 -i revisions/J0/src/
 azlj_FXFLAGS = --rom-version 0 --title "ZELDA"
 
-games += azlj-r1.gbc
+games += azlj-r1.pocket
 src/main.azlj-r1.o: $(azlj_asm) $(azlj_gfx:.png=.2bpp) $(azlj_bin)
 azlj-r1_ASFLAGS = -DLANG=JP -DVERSION=1 -i revisions/J0/src/
 azlj-r1_FXFLAGS = --rom-version 1 --title "ZELDA"
 
-games += azlj-r2.gbc
+games += azlj-r2.pocket
 src/main.azlj-r2.o: $(azlj_asm) $(azlj_gfx:.png=.2bpp) $(azlj_bin)
 azlj-r2_ASFLAGS = -DLANG=JP -DVERSION=2 -i revisions/J0/src/
 azlj-r2_FXFLAGS = --rom-version 2 --title "ZELDA" --game-id "AZLJ"
@@ -98,15 +98,15 @@ azlg_asm = $(shell find revisions/G0 -type f -name '*.asm')
 azlg_gfx = $(shell find revisions/G0 -type f -name '*.png')
 azlg_bin = $(shell find revisions/J0 -type f -name '*.tilemap.encoded')
 
-games += azlg.gbc
+games += azlg.pocket
 src/main.azlg.o: $(azlg_asm) $(azlg_gfx:.png=.2bpp) $(azlg_bin)
 azlg_ASFLAGS = -DLANG=DE -DVERSION=0 -i revisions/G0/src/
 azlg_FXFLAGS = --rom-version 0 --non-japanese --title "ZELDA"
 
-games += azlg-r1.gbc
-src/main.azlg-r1.o: $(azlg_asm) $(azlg_gfx:.png=.2bpp) $(azlg_bin) azlj-r2.gbc
+games += azlg-r1.pocket
+src/main.azlg-r1.o: $(azlg_asm) $(azlg_gfx:.png=.2bpp) $(azlg_bin) azlj-r2.pocket
 azlg-r1_ASFLAGS = -DLANG=DE -DVERSION=1 -i revisions/G0/src/
-azlg-r1_LDFLAGS = -O azlj-r2.gbc
+azlg-r1_LDFLAGS = -O azlj-r2.pocket
 azlg-r1_FXFLAGS = --rom-version 1 --non-japanese --title "ZELDA" --game-id "AZLD"
 
 #
@@ -117,35 +117,35 @@ azlf_asm = $(shell find revisions/F0 -type f -name '*.asm')
 azlf_gfx = $(shell find revisions/F0 -type f -name '*.png')
 azlf_bin = $(shell find revisions/F0 -type f -name '*.tilemap.encoded')
 
-games += azlf.gbc
+games += azlf.pocket
 src/main.azlf.o: $(azlf_asm) $(azlf_gfx:.png=.2bpp) $(azlf_bin)
 azlf_ASFLAGS = -DLANG=FR -DVERSION=0 -i revisions/F0/src/
 azlf_FXFLAGS = --rom-version 0 --non-japanese --title "ZELDA"
 
-games += azlf-r1.gbc
-src/main.azlf-r1.o: $(azlf_asm) $(azlf_gfx:.png=.2bpp) $(azlf_bin) azlg-r1.gbc
+games += azlf-r1.pocket
+src/main.azlf-r1.o: $(azlf_asm) $(azlf_gfx:.png=.2bpp) $(azlf_bin) azlg-r1.pocket
 azlf-r1_ASFLAGS = -DLANG=FR -DVERSION=1 -i revisions/F0/src/
-azlf-r1_LDFLAGS = -O azlg-r1.gbc
+azlf-r1_LDFLAGS = -O azlg-r1.pocket
 azlf-r1_FXFLAGS = --rom-version 1 --non-japanese --title "ZELDA" --game-id "AZLF"
 
 #
 # English
 #
 
-games += azle.gbc
+games += azle.pocket
 src/main.azle.o:
 azle_ASFLAGS = -DLANG=EN -DVERSION=0
 azle_FXFLAGS = --rom-version 0 --non-japanese --title "ZELDA"
 
-games += azle-r1.gbc
+games += azle-r1.pocket
 src/main.azle-r1.o:
 azle-r1_ASFLAGS = -DLANG=EN -DVERSION=1
 azle-r1_FXFLAGS = --rom-version 1 --non-japanese --title "ZELDA"
 
-games += azle-r2.gbc
-src/main.azle-r2.o: azlf-r1.gbc
+games += azle-r2.pocket
+src/main.azle-r2.o: azlf-r1.pocket
 azle-r2_ASFLAGS = -DLANG=EN -DVERSION=2
-azle-r2_LDFLAGS = -O azlf-r1.gbc
+azle-r2_LDFLAGS = -O azlf-r1.pocket
 azle-r2_FXFLAGS = --rom-version 2 --non-japanese --title "ZELDA" --game-id "AZLE"
 
 #
@@ -153,14 +153,14 @@ azle-r2_FXFLAGS = --rom-version 2 --non-japanese --title "ZELDA" --game-id "AZLE
 #
 
 # By default, build the US 1.0 revision.
-build: azle.gbc
+build: azle.pocket
 
 # Build all revisions.
 build-all: $(games)
 
 # Test the default revision.
 test: build
-	@tools/compare.sh ladx.md5 azle.gbc
+	@tools/compare.sh ladx.md5 azle.pocket
 
 # Test all revisions.
 test-all: build-all
@@ -170,9 +170,9 @@ all: build-all test-all
 
 clean:
 	rm -f $(games)
-	rm -f $(games:%.gbc=src/main.%.o)
-	rm -f $(games:.gbc=.map)
-	rm -f $(games:.gbc=.sym)
+	rm -f $(games:%.pocket=src/main.%.o)
+	rm -f $(games:.pocket=.map)
+	rm -f $(games:.pocket=.sym)
 	rm -f $(gfx_files:.png=.2bpp)
 	rm -f $(azlj_gfx:.png=.2bpp)
 	rm -f $(azlg_gfx:.png=.2bpp)

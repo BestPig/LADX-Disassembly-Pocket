@@ -110,8 +110,8 @@ jr_001_56D9::
     ld   [wC1B1], a                               ; $56D9: $EA $B1 $C1
     ld   a, [wDBB4]                               ; $56DC: $FA $B4 $DB
     ld   [wC1B4], a                               ; $56DF: $EA $B4 $C1
-    ld   a, [$FF40]                               ; $56E2: $F0 $40
-    and  $DF                                      ; $56E4: $E6 $DF
+    ld   a, [$FF4E]                               ; $56E2: $F0 $40
+    and  $FB                                      ; $56E4: $E6 $DF
     ld   [wLCDControl], a                         ; $56E6: $EA $FD $D6
     ld   [rLCDC], a                               ; $56E9: $E0 $40
     call func_001_5888                            ; $56EB: $CD $88 $58

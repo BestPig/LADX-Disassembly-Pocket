@@ -1,6 +1,7 @@
 # build
 *.o
 *.gbc
+*.pocket
 *.1bpp
 *.2bpp
 

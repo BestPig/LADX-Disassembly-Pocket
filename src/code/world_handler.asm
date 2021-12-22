@@ -318,8 +318,8 @@ GameplayWorldLoad6Handler::
     ; Finish preparations
     ;
 
-    ld   a, [$FF40]                               ; $450A: $F0 $40
-    or   $20                                      ; $450C: $F6 $20
+    ld   a, [$FF4E]                               ; $450A: $F0 $40
+    or   $04                                      ; $450C: $F6 $20
     ld   [wLCDControl], a                         ; $450E: $EA $FD $D6
     ld   [rLCDC], a                               ; $4511: $E0 $40
 

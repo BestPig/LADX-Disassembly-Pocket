@@ -4585,7 +4585,7 @@ LCDOff::
     cp   $91                                      ; $28D9: $FE $91
     jr   nz, .waitForEndOfLine ; Wait for row 145 ; $28DB: $20 $FA
     ld   a, [rLCDC]  ; \                          ; $28DD: $F0 $40
-    and  $7F         ; | Switch off LCD screen    ; $28DF: $E6 $7F
+    and  $fe         ; | Switch off LCD screen    ; $28DF: $E6 $7F
     ld   [rLCDC], a  ; /                          ; $28E1: $E0 $40
     ldh  a, [hFFD2]                               ; $28E3: $F0 $D2
     ld   [rIE], a    ; Restore interrupts configuration ; $28E5: $E0 $FF

@@ -71,7 +71,7 @@ Init::
     ;   Bit 4: Mode 1 V-Blank interrupt disabled
     ;   Bit 3: Mode 0 H-Blank interrupt disabled
     ;   Bit 2-0: read-only
-    ld   a, %01000100                             ; $01AE: $3E $44
+    ld   a, %00100010                             ; $01AE: $3E $44
     ld   [rSTAT], a                               ; $01B0: $E0 $41
 
     ; Initialize LY Compare register

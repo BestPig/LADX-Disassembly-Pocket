@@ -891,7 +891,7 @@ ApplyWindFishVfx::
 
 jr_017_4911:
     ldh  a, [rSTAT]                               ; $4911: $F0 $41
-    and  $03                                      ; $4913: $E6 $03
+    and  $C0                                      ; $4913: $E6 $03
     jr   nz, jr_017_4911                          ; $4915: $20 $FA
 
     ld   d, $00                                   ; $4917: $16 $00
@@ -941,7 +941,7 @@ jr_017_4960:
 
 jr_017_4964:
     ldh  a, [rSTAT]                               ; $4964: $F0 $41
-    and  $03                                      ; $4966: $E6 $03
+    and  $C0                                      ; $4966: $E6 $03
     jr   nz, jr_017_4964                          ; $4968: $20 $FA
 
     ld   d, $00                                   ; $496A: $16 $00
@@ -1201,7 +1201,7 @@ jr_017_4C2F:
     ld   a, $00                                   ; $4C3C: $3E $00
     ldh  [rLYC], a                                ; $4C3E: $E0 $45
     ld   hl, wLCDControl                          ; $4C40: $21 $FD $D6
-    res  3, [hl]                                  ; $4C43: $CB $9E
+    res  4, [hl]                                  ; $4C43: $CB $9E
     call ResetCreditsSceneVariables               ; $4C45: $CD $A5 $4D
     call IncrementCreditsGameplaySubtype          ; $4C48: $CD $5B $4C
     ld   a, MUSIC_MEETING_WINDFISH                ; $4C4B: $3E $59
@@ -2899,7 +2899,7 @@ func_017_5A66::
     ld   a, $50                                   ; $5AAF: $3E $50
     ldh  [hLinkPositionX], a                      ; $5AB1: $E0 $98
     ld   hl, wLCDControl                          ; $5AB3: $21 $FD $D6
-    set  3, [hl]                                  ; $5AB6: $CB $DE
+    set  4, [hl]                                  ; $5AB6: $CB $DE
     ld   a, $A0                                   ; $5AB8: $3E $A0
     ld   [wD006], a                               ; $5ABA: $EA $06 $D0
     ld   a, $FF                                   ; $5ABD: $3E $FF
@@ -3331,7 +3331,7 @@ CreditsWaterNoiseFadingOutHandler::
     ld   a, $80                                   ; $6037: $3E $80
     ld   [wD466], a                               ; $6039: $EA $66 $D4
     ld   hl, wLCDControl                          ; $603C: $21 $FD $D6
-    res  3, [hl]                                  ; $603F: $CB $9E
+    res  4, [hl]                                  ; $603F: $CB $9E
     ld   hl, wGameplaySubtype                     ; $6041: $21 $96 $DB
     inc  [hl]                                     ; $6044: $34
 
@@ -3361,7 +3361,7 @@ LinkOnSeaLarge0Handler::
     jp   z, IncrementCreditsSubscene              ; $606D: $CA $D9 $4C
 
     ld   hl, wLCDControl                          ; $6070: $21 $FD $D6
-    res  2, [hl]                                  ; $6073: $CB $96
+    res  5, [hl]                                  ; $6073: $CB $96
     jp   IncrementCreditsSubscene                 ; $6075: $C3 $D9 $4C
 
 LinkOnSeaLarge1Handler::
@@ -3753,7 +3753,7 @@ func_017_629E::
     add  hl, de                                   ; $6341: $19
     ld   [hl], $11                                ; $6342: $36 $11
     ld   hl, wLCDControl                          ; $6344: $21 $FD $D6
-    res  2, [hl]                                  ; $6347: $CB $96
+    res  5, [hl]                                  ; $6347: $CB $96
     jp   IncrementCreditsSubscene                 ; $6349: $C3 $D9 $4C
 
 Data_017_634C::
@@ -3969,7 +3969,7 @@ func_017_64DE::
     ld   hl, $FFFF                                ; $6508: $21 $FF $FF
     res  1, [hl]                                  ; $650B: $CB $8E
     ld   hl, wLCDControl                          ; $650D: $21 $FD $D6
-    set  2, [hl]                                  ; $6510: $CB $D6
+    set  5, [hl]                                  ; $6510: $CB $D6
     ld   hl, wGameplaySubtype                     ; $6512: $21 $96 $DB
     inc  [hl]                                     ; $6515: $34
     ld   a, [hl]                                  ; $6516: $7E
@@ -4857,7 +4857,7 @@ CreditsRollLoadHandler::
     ld   a, $01                                   ; $6E96: $3E $01
     ld   [wPaletteUnknownE], a                    ; $6E98: $EA $D5 $DD
     ld   hl, wLCDControl                          ; $6E9B: $21 $FD $D6
-    res  2, [hl]                                  ; $6E9E: $CB $96
+    res  5, [hl]                                  ; $6E9E: $CB $96
     jp   IncrementCreditsSubscene                 ; $6EA0: $C3 $D9 $4C
 
 CreditsRoll1Handler::

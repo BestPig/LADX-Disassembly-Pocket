@@ -214,7 +214,7 @@ ENDC
     ld   de, wBGPal1                            ; $4162: JumpTable_028_40FB $11 $10 $DC
     call func_028_4176                          ; $4165: JumpTable_028_40FB $CD $76 $41
                                                 ; $4168: JumpTable_028_40FB $3E $C7
-    ld   a, $C7
+    ld   a, $E3
     ld   [wLCDControl], a                       ; $416A: JumpTable_028_40FB $EA $FD $D6
     ld   [rLCDC], a                             ; $416D: JumpTable_028_40FB $E0 $40
     xor  a                                      ; $416F: JumpTable_028_40FB $AF
@@ -612,7 +612,7 @@ JumpTable_028_43B2:
     call func_028_4411                          ; $43B8: JumpTable_028_43B2 $CD $11 $44
     call func_028_442C                          ; $43BB: JumpTable_028_43B2 $CD $2C $44
                                                 ; $43BE: JumpTable_028_43B2 $3E $C7
-    ld   a, $C7
+    ld   a, $E3
     ld   [wLCDControl], a                       ; $43C0: JumpTable_028_43B2 $EA $FD $D6
     ld   [rLCDC], a                             ; $43C3: JumpTable_028_43B2 $E0 $40
     xor  a                                      ; $43C5: JumpTable_028_43B2 $AF

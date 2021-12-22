@@ -190,7 +190,7 @@ LCDOn::
     ;   Bit 2: Sprite size 8x16
     ;   Bit 1: Sprite displayed enabled
     ;   Bit 0: Background display enabled
-    ld   a, %11000111                             ; $410D: $3E $C7
+    ld   a, %11100011                             ; $410D: $3E $C7
     ld   [rLCDC], a                               ; $410F: $E0 $40
     ld   [wLCDControl], a                         ; $4111: $EA $FD $D6
 

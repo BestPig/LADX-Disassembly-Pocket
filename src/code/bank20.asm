@@ -1669,7 +1669,7 @@ jr_020_5290:
 
 jr_020_5296:
     ldh  a, [rSTAT]                               ; $5296: $F0 $41
-    and  $03                                      ; $5298: $E6 $03
+    and  $C0                                      ; $5298: $E6 $03
     jr   nz, jr_020_5296                          ; $529A: $20 $FA
 
     ld   hl, hMultiPurpose1                            ; $529C: $21 $D8 $FF
@@ -1729,7 +1729,7 @@ jr_020_52E2:
 
 jr_020_52E8:
     ldh  a, [rSTAT]                               ; $52E8: $F0 $41
-    and  $03                                      ; $52EA: $E6 $03
+    and  $C0                                      ; $52EA: $E6 $03
     jr   nz, jr_020_52E8                          ; $52EC: $20 $FA
 
     ldh  a, [hBaseScrollY]                        ; $52EE: $F0 $97
@@ -4486,7 +4486,7 @@ jr_020_6659:
     xor  a                                        ; $6668: $AF
     ld   [rSVBK], a                               ; $6669: $E0 $70
     ld   a, [wLCDControl]                         ; $666B: $FA $FD $D6
-    and  $7F                                      ; $666E: $E6 $7F
+    and  $fe                                      ; $666E: $E6 $7F
     ld   [rLCDC], a                               ; $6670: $E0 $40
     ldh  a, [hMapId]                              ; $6672: $F0 $F7
     cp   MAP_COLOR_DUNGEON                        ; $6674: $FE $FF

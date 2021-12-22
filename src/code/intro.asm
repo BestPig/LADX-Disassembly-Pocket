@@ -165,8 +165,8 @@ ENDC
     ldh  [hFrameCounter], a                       ; $6F0E: $E0 $E7
     ld   a, $A2                                   ; $6F10: $3E $A2
     ld   [wRandomSeed], a                               ; $6F12: $EA $3D $C1
-    ld   a, [$FF40]                               ; $6F15: $F0 $40
-    and  $DF                                      ; $6F17: $E6 $DF
+    ld   a, [$FF4E]                               ; $6F15: $F0 $40
+    and  $FB                                      ; $6F17: $E6 $DF
     ld   [wLCDControl], a                         ; $6F19: $EA $FD $D6
     ld   [rLCDC], a                               ; $6F1C: $E0 $40
     ld   a, $B4                                   ; $6F1E: $3E $B4
